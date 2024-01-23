@@ -11,9 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Aplikasi E-book Fisika',
-      home: HomeScreen()
-    );
+    return MaterialApp(title: 'Aplikasi E-book Fisika', home: HomeScreen());
   }
 }
