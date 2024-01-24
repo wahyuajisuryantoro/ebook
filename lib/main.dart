@@ -1,4 +1,5 @@
 import 'package:ebook/pages/HomeScreen.dart';
+import 'package:ebook/pages/LatihanSoalScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

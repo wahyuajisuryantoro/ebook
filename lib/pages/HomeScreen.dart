@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ebook/pages/ContohSoalScreen.dart';
+import 'package:ebook/pages/LatihanSoalScreen.dart';
 import 'package:ebook/pages/MateriScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -71,8 +72,14 @@ class HomeScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => ContohSoal()),
                       );
+                    } else if (menuItems[index] == 'Latihan Soal') {
+                      // This is where you navigate to ContohSoal
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LatihanSoalPage()),
+                      );
                     }
-                    // Tambahkan pengarahan ke halaman lain di sini sesuai menuItems lainnya
                   },
                   child: Card(
                     child: Center(
