@@ -1,5 +1,6 @@
 import 'package:ebook/model/LatihanSoalModel.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LatihanSoalPage extends StatefulWidget {
   @override
@@ -142,7 +143,7 @@ class _LatihanSoalPageState extends State<LatihanSoalPage> {
     }
   }
 
-  void _hitungNilai() {
+  void _hitungNilai() async {
     int jumlahBenar = 0;
     skor = 0;
     for (int i = 0; i < soal.length; i++) {
@@ -155,7 +156,9 @@ class _LatihanSoalPageState extends State<LatihanSoalPage> {
         skor += 4;
       }
     }
-
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('nama', 'Nama Pengguna');
+    await prefs.setInt('skor', skor);
     showDialog(
       context: context,
       builder: (BuildContext context) {

@@ -1,11 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ebook/model/ProfileModel.dart';
 import 'package:ebook/pages/ContohSoalScreen.dart';
 import 'package:ebook/pages/LatihanSoalScreen.dart';
 import 'package:ebook/pages/MateriScreen.dart';
+import 'package:ebook/pages/ProfilePageScreen.dart';
 import 'package:ebook/pages/VideoScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final List<String> imageList = [
     'images/image1.jpg',
     'images/image2.jpg',
@@ -21,6 +29,25 @@ class HomeScreen extends StatelessWidget {
     'About Us',
   ];
 
+  String userName = ''; // Inisialisasi variabel untuk nama pengguna
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserName(); // Memanggil fungsi untuk mengambil nama pengguna dari SharedPreferences
+  }
+
+  Future<void> _loadUserName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedUserName = prefs.getString('name');
+
+    if (storedUserName != null && storedUserName.isNotEmpty) {
+      setState(() {
+        userName = storedUserName;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +57,10 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Text(
+              userName.isNotEmpty ? 'Selamat Datang, $userName' : '',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             CarouselSlider(
               options: CarouselOptions(
                 height: 200.0,
@@ -84,6 +115,15 @@ class HomeScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => VideoPlayerScreen()),
+                      );
+                    } else if (menuItems[index] == 'Profile') {
+                      // Check if the selected item is 'Profile'
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfilePage(
+                                service:
+                                    ProfileService())), // Assuming ProfileService is required
                       );
                     }
                   },
