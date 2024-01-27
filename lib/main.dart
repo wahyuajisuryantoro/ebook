@@ -1,6 +1,11 @@
-import 'package:ebook/pages/HomeScreen.dart';
-import 'package:ebook/pages/LatihanSoalScreen.dart';
+import 'package:ebook/pages/VideoScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:ebook/pages/HomeScreen.dart';
+import 'package:ebook/pages/MateriScreen.dart'; // Pastikan Anda telah membuat halaman ini
+import 'package:ebook/pages/ContohSoalScreen.dart'; // Pastikan Anda telah membuat halaman ini
+import 'package:ebook/pages/VideoPembelajaranScreen.dart'; // Pastikan Anda telah membuat halaman ini
+import 'package:ebook/pages/LatihanSoalScreen.dart';
+import 'package:ebook/pages/ProfileScreen.dart'; // Pastikan Anda telah membuat halaman ini
 
 void main() {
   runApp(const MyApp());
@@ -9,9 +14,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Aplikasi E-book Fisika', home: HomeScreen());
+    return MaterialApp(
+      title: 'Aplikasi E-book Fisika',
+      home: HomeScreen(),
+    );
   }
 }

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ebook/pages/ContohSoalScreen.dart';
 import 'package:ebook/pages/LatihanSoalScreen.dart';
 import 'package:ebook/pages/MateriScreen.dart';
+import 'package:ebook/pages/VideoScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -73,11 +74,16 @@ class HomeScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => ContohSoal()),
                       );
                     } else if (menuItems[index] == 'Latihan Soal') {
-                      // This is where you navigate to ContohSoal
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => LatihanSoalPage()),
+                      );
+                    } else if (menuItems[index] == 'Video Pembelajaran') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VideoPlayerScreen()),
                       );
                     }
                   },
