@@ -1,65 +1,25 @@
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatelessWidget {
-  final int selectedIndex;
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentIndex; // Indeks halaman aktif
+  final Function(int) onTap; // Fungsi yang akan dipanggil ketika item diklik
 
-  BottomNavBar({required this.selectedIndex});
+  // Daftar item dalam BottomNavigationBar
+  final List<BottomNavigationBarItem> items;
 
-  void _selectPage(BuildContext context, int index) {
-    String routeName;
-    switch (index) {
-      case 0:
-        routeName = '/materi';
-        break;
-      case 1:
-        routeName = '/contohSoal';
-        break;
-      case 2:
-        routeName = '/videoPembelajaran';
-        break;
-      case 3:
-        routeName = '/latihanSoal';
-        break;
-      case 4:
-        routeName = '/profile';
-        break;
-      default:
-        routeName = '/';
-    }
-
-    if (ModalRoute.of(context)?.settings.name != routeName) {
-      Navigator.pushReplacementNamed(context, routeName);
-    }
-  }
+  CustomBottomNavigationBar({
+    required this.currentIndex,
+    required this.onTap,
+    required this.items,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: selectedIndex,
-      selectedItemColor: Colors.blue,
-      onTap: (index) => _selectPage(context, index),
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.book),
-          label: 'Materi',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.question_answer),
-          label: 'Contoh Soal',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.play_circle_fill),
-          label: 'Video Pembelajaran',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.edit),
-          label: 'Latihan Soal',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
+      currentIndex: currentIndex,
+      type: BottomNavigationBarType.fixed, // Untuk lebih dari 3 item
+      items: items,
+      onTap: onTap, // Panggil fungsi onTap yang diberikan
     );
   }
 }

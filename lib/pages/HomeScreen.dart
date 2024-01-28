@@ -5,6 +5,7 @@ import 'package:ebook/pages/LatihanSoalScreen.dart';
 import 'package:ebook/pages/MateriScreen.dart';
 import 'package:ebook/pages/ProfilePageScreen.dart';
 import 'package:ebook/pages/VideoScreen.dart';
+import 'package:ebook/widget/CustomButtomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
